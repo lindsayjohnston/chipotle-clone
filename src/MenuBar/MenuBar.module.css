@@ -1,0 +1,69 @@
+.MenuBar{
+    display: inline-flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    top: 0;
+    border-bottom: 1px solid #d4cbc7;
+    align-items: center;
+    padding: 5px;
+    background-color: white;
+}
+
+.LeftDiv{
+    display: flex;
+    flex: 1 2 100%;
+}
+
+.Menu{
+    width: fit-content;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.Logo{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.Logo img{
+    width: 70px;
+}
+
+.SignIn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.SignIn p{
+    margin-left: 5px;
+}
+
+.FindRestaurant{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #451400;
+    border-radius: 50px;
+    padding: 0px 5px;
+    color: white;
+    width: 200px;
+    
+}
+
+.FindRestaurant p{
+    margin-left: 10px;
+    border-left: 1px white solid;
+    padding-left: 10px;
+}
+
+.RightDiv {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 2 100%;
+}

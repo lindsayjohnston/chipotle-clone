@@ -1,24 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import MenuBar from './MenuBar/MenuBar';
+import PromoBanner from './PromoBanner/PromoBanner';
+import LoyaltyContainer from './LoyaltyContainer/LoyaltyContainer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          IS THIS WORKING?
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <MenuBar />
+        <PromoBanner/>
+        <LoyaltyContainer/>
     </div>
   );
 }
