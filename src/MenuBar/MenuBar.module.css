@@ -1,4 +1,5 @@
 .MenuBar{
+    z-index: 500;
     display: inline-flex;
     flex-direction: row;
     position: fixed;

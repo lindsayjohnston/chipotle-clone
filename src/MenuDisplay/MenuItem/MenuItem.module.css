@@ -1,0 +1,40 @@
+.MenuItem{
+    width: 325px;
+    height: 260px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.FixedTop{
+    position: absolute;
+    top: 0px;
+}
+
+.FixedBottom{
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+}
+
+.SmallImg {
+    height: 170px;
+}
+.BigImg{
+    height: 180px;    
+}
+
+.MenuItem h1{
+    font-size: 40px;
+    margin: 0;
+}
+
+.MenuItem h2{
+    color: #b68207;
+}
+
+.Label {
+    height: 30px;
+}
