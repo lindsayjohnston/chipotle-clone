@@ -14,9 +14,9 @@ class App extends Component {
   }
 
   render() {
-    // let pageShown = this.state.pageShown;
+    let pageShown = this.state.pageShown;
     
-    let pageShown = <ItemPage name="TEST" />;
+    // let pageShown = <ItemPage name="TEST" />;
     return (
       <div>
         {pageShown}

@@ -1,10 +1,20 @@
 .ToppingCard{
     height: 250px;
     width: 170px;
-    border: 1px solid grey;
+    border: 1px solid #d4cbc7;
     display: flex;
     justify-content: center;
     position: relative;
+    top:-90px;
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.17);
+}
+
+.Image{
+    height: 250px;
+    width: 170px;
+    background-repeat: no-repeat;
+    transform: translateY(90px);
+    background-size: 100%;
 }
 
 .Top{
@@ -22,7 +32,8 @@
     bottom: 0px;
     margin: 0px;
     text-align: center;
-    background-color: pink;
+    background-color: white;
+    border-top:1px solid #d4cbc7;
     width:100%;
 }
 
