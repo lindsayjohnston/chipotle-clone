@@ -1,0 +1,21 @@
+.ToppingsSection {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    justify-content: center;
+}
+
+.ToppingsSection h1{
+    margin-bottom: 0;
+}
+
+.ToppingsSection > div > p{
+    margin:0 0 15px 0; 
+}
+
+.ToppingCards{
+    display:flex;
+    flex-direction: row;
+    width: 1000px;
+    justify-content: space-between;
+}
