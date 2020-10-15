@@ -29,6 +29,8 @@ const menuDisplay = (props) => (
     <div className={styles.MenuDisplay}>
         {menuItems.map(item => (
             <MenuItem 
+                key={item.name}
+                click={(item, img)=>{ props.click(item, img)}}
                 name={item.name}
                 img={item.img}
             />
