@@ -10,7 +10,7 @@ import ToppingSection from './ToppingsSection/ToppingsSection';
 
 
 const bottomButtonTag = <h2>ADD TO BAG</h2>;
-
+const returnToMenuTag= <h1>RETURN TO MENU</h1>
 class ItemPage extends Component {
     state = {
         BURRITO: {
@@ -23,9 +23,27 @@ class ItemPage extends Component {
         },
         SIDESANDDRINKS: {
             description: "Everything else you need to round out your meal.",
-            options: ["BEANS", "TOPPINGS"]
-        }
+            options: ["SIDES", "DRINKS"]
+        },
+        itemOrdered: null
     }
+
+    addToppingHandler(topping, item){
+        if(this.state.itemOrdered===null){
+            this.setState({itemOrdered: [item, topping]})
+        }
+        else{
+            let itemArray= this.state.itemOrdered;
+            itemArray.push(topping);
+            this.setState({itemOrdered: itemArray});
+        }
+      
+        alert("state: " + this.state.itemOrdered);
+    };
+
+    addToBagHandler(item){
+
+    };
 
     render() {
         let description= null;
@@ -59,7 +77,10 @@ class ItemPage extends Component {
                             content={signInTag}
                             style={styles.SignIn}
                         />
-                        <h2>RETURN TO MENU</h2>
+                        <Button content={returnToMenuTag}
+                            style={styles.ReturnToMenu}
+                            clicked={()=>{this.props.returnHomeClick("HOMEPAGE", null)}}
+                        />
                     </div>
                     <Button content={checkOutTag}
                         style={styles.CheckOut}
@@ -68,9 +89,8 @@ class ItemPage extends Component {
 
                 <div className={styles.ItemPageMain}>
                     <div className={styles.ItemPageBanner}>
-                        <div className={styles.ImgPlaceHolder}>
                             <img alt={this.props.name} src={this.props.image} ></img>
-                        </div>
+                        
                         <div className={styles.Description}>
                             <h2 >BUILD YOUR </h2>
                             <h1>{this.props.name}</h1>
@@ -85,7 +105,9 @@ class ItemPage extends Component {
                     <div className={styles.ItemChoicesDiv}>
                         {options.map(
                             title=>(
-                                <ToppingSection key={title} title={title} />))}
+                                <ToppingSection key={title} title={title} 
+                                toppingClick={(topping)=>{this.addToppingHandler(topping, this.props.name)}} />
+                                ))}
 
                     </div>
                     <div className={styles.CheckoutBottomBar}>

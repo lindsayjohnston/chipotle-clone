@@ -26,13 +26,11 @@ const menuBar = (props) => {
                     style={styles.Logo}
                     key="Logo"
                     content={logoTag}
-                    clicked={() => clickHandler('Logo')}
                 />
                 <Button
                     style={styles.SignIn}
                     key="SignIn"
                     content={signInTag}
-                    clicked={() => clickHandler('SignIn')}
                 />
             </div>
 
@@ -41,7 +39,6 @@ const menuBar = (props) => {
                     style={styles.FindRestaurant}
                     key="FindRestaurant"
                     content={findRestaurantTag}
-                    clicked={() => clickHandler('FindRestaurant')}
                 />
             </div>
 

@@ -4,13 +4,25 @@ import ItemPage from './ItemPage/ItemPage';
 
 class App extends Component {
   state = {
-    pageShown:<HomePage itemClick={(item,img) => this.pageShownHandler(item,img)} />
-    
+    pageShown:<HomePage itemClick={(item,img) => this.pageShownHandler(item,img)} />,
+    order: []
   }
 
   pageShownHandler = (item, img) => {
-    let newPage= <ItemPage name={item} image={img}/>;
-    this.setState({ pageShown: newPage});
+      if(item === "BURRITO" || item === "TACOS" || item=== "SIDES & DRINKS"){
+        let newPage= <ItemPage 
+                        returnHomeClick={(item, img) =>this.pageShownHandler (item, img)} name={item} image={img}/>;
+        this.setState({ pageShown: newPage});
+      }
+      if(item==="HOMEPAGE"){
+        this.setState({pageShown:<HomePage itemClick={(item,img) => this.pageShownHandler(item,img)} 
+        />})
+      }
+  }
+
+  addToOrderHandler=(topping, item)=>{
+    alert("added " + topping + " on " + item);
+    //add to state
   }
 
   render() {

@@ -1,8 +1,9 @@
 .ToppingsSection {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
+    /* width:100vw; */
     justify-content: center;
+    padding: 0px 100px;
 }
 
 .ToppingsSection h1{
@@ -16,6 +17,12 @@
 .ToppingCards{
     display:flex;
     flex-direction: row;
-    width: 1000px;
-    justify-content: space-between;
+    width: 100%;
+    
 }
+
+.ToppingCardMargin{
+    margin-right: 20px;
+}
+
+

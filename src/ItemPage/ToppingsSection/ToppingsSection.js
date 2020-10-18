@@ -94,6 +94,47 @@ class ToppingsSection extends Component {
                 
             ]
         },
+        "SIDES": {
+            description: null,
+            options: [
+                {
+                    name: "CHIPS",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-1002-chips/web-mobile/chips.png)",
+                    price: 1.45,
+                    calories: 540
+                },
+                {
+                    name: "SALSA",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-5201-fresh-tomato-salsa/web-mobile/order.png)",
+                    price: 1.00,
+                    calories: 25
+                },
+            ]
+        },
+        "DRINKS": {
+            description: null,
+            options: [
+                {
+                    name: "MEXICAN COCA-COLA",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-2810-mexican-coca-cola/web-desktop/order.png)",
+                    price: 3.00,
+                    calories: 150
+                },
+                {
+                    name: "ORGANIC LEMONADE",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-ftn-organic-lemonade/web-desktop/order.png",
+                    price: 2.40,
+                    calories: 110
+                },
+                {
+                    name: "BOTTLED WATER",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-2201-bottled-water/web-desktop/order.png",
+                    price: 2.45,
+                    calories: 0
+                }
+                
+            ]
+        },
     }
 
     render() {
@@ -107,12 +148,20 @@ class ToppingsSection extends Component {
                 </div>
                 <div className={styles.ToppingCards}>
                     {this.state[title].options.map(option => (
-                        <ToppingCard 
+                        <div className={styles.ToppingCardMargin}>
+                             <ToppingCard
+                             toppingClick= {this.props.toppingClick}
+                            className={styles.ToppingCard} 
                             image={option.image}
                             price={option.price}
                             calories={option.calories}
                             name={option.name}/>
-                        ))};
+                            
+
+                        </div>))
+                    }
+
+                       
                     
                 </div>
 

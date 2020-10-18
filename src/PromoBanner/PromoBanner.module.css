@@ -1,8 +1,10 @@
 .PromoBanner {
     margin-top: 75px;
-    padding: 50px 120px;
-    background: url("../Assets/taco-photo.jpg") no-repeat;
-    background-size: 100%;
+    width: 100vw;
+    padding: 50px;
+    background-image: url("https://www.chipotle.com/content/dam/poc/order/images/promo-banners/carne-2020/2300x520-Desktop-Background-Carne@2x.jpg");
+    background-size: cover;
+    background-position: center;
     height: 520px;
     border-bottom: 1px solid #d4cbc7;
 }

@@ -10,7 +10,8 @@ const toppingCard = (props) => {
     
     return(
             <div className={styles.Image}
-                style={{ backgroundImage: props.image}}>
+                style={{ backgroundImage: props.image}}
+                onClick={()=>props.toppingClick(props.name)}>
 
                 <div className={styles.ToppingCard}>
                     <div className={styles.Top} >
