@@ -7,7 +7,7 @@ import logoTag from '../TagsForButtons/LogoTag';
 import signInTag from '../TagsForButtons/SignInTag';
 import checkOutTag from '../TagsForButtons/CheckOutTag';
 import ToppingSection from './ToppingsSection/ToppingsSection';
-
+import CheckoutSideDrawer from '../CheckoutSideDrawer/CheckoutSideDrawer';
 
 const bottomButtonTag = <h2>ADD TO BAG</h2>;
 const returnToMenuTag= <h1>RETURN TO MENU</h1>
@@ -41,7 +41,7 @@ class ItemPage extends Component {
         alert("state: " + this.state.itemOrdered);
     };
 
-    addToBagHandler(item){
+    addToBagHandler(){
 
     };
 
@@ -64,6 +64,7 @@ class ItemPage extends Component {
 
         return (
             <Aux >
+                <CheckoutSideDrawer/>
                 <nav className={styles.ItemPageNav}>
                     <div className={styles.LeftSection}>
                         <Button content={barsTag}
@@ -86,7 +87,6 @@ class ItemPage extends Component {
                         style={styles.CheckOut}
                     />
                 </nav>
-
                 <div className={styles.ItemPageMain}>
                     <div className={styles.ItemPageBanner}>
                             <img alt={this.props.name} src={this.props.image} ></img>
@@ -116,13 +116,13 @@ class ItemPage extends Component {
                             <p>This is a message that might change according to options needed to be added.</p>
 
                         </div>
-                        <Button content={bottomButtonTag} style={styles.BottomButton} />
+                        <Button content={bottomButtonTag} style={styles.BottomButton} clicked={()=>this.props.addToBagClick(this.state.itemOrdered)}/>
 
                     </div>
 
                 </div>
-
-
+                
+                          
             </Aux>
 
         )

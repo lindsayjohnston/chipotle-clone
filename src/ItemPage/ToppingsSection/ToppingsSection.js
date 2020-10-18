@@ -155,6 +155,7 @@ class ToppingsSection extends Component {
                             image={option.image}
                             price={option.price}
                             calories={option.calories}
+                            key={option.name}
                             name={option.name}/>
                             
 

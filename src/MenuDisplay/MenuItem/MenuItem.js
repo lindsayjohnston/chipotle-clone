@@ -19,7 +19,7 @@ class MenuItem extends Component {
         let image= <img className={styles.SmallImg} alt={this.props.name} src={this.props.img}></img>;
 
         if(this.state.hovered) {
-            orderLabel= <h2 className={styles.Label}>ORDER <i class="fas fa-arrow-right"></i></h2>;
+            orderLabel= <h2 className={styles.Label}>ORDER <i className="fas fa-arrow-right"></i></h2>;
 
             image= <img className={styles.BigImg} alt={this.props.name} src={this.props.img}></img>;
         };

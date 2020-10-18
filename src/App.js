@@ -11,6 +11,7 @@ class App extends Component {
   pageShownHandler = (item, img) => {
       if(item === "BURRITO" || item === "TACOS" || item=== "SIDES & DRINKS"){
         let newPage= <ItemPage 
+                        addToBagClick={(itemArray)=>this.addToOrderHandler(itemArray)}
                         returnHomeClick={(item, img) =>this.pageShownHandler (item, img)} name={item} image={img}/>;
         this.setState({ pageShown: newPage});
       }
@@ -20,8 +21,8 @@ class App extends Component {
       }
   }
 
-  addToOrderHandler=(topping, item)=>{
-    alert("added " + topping + " on " + item);
+  addToOrderHandler=(itemArray)=>{
+    alert("added " + itemArray);
     //add to state
   }
 

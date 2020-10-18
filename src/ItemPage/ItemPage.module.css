@@ -1,5 +1,5 @@
 .ItemPageNav{
-    z-index: 500;
+    z-index: 300;
     display: inline-flex;
     flex-direction: row;
     position: fixed;
