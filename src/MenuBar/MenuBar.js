@@ -47,7 +47,7 @@ const menuBar = (props) => {
                     style={styles.CheckOut}
                     key="CheckOut"
                     content={checkOutTag}
-                    clicked={() => clickHandler('CheckOut')}
+                    clicked={() => props.checkoutClick(true)}
                 />
             </div>
 

@@ -64,7 +64,7 @@ class ItemPage extends Component {
 
         return (
             <Aux >
-                <CheckoutSideDrawer/>
+                {/* <CheckoutSideDrawer/> */}
                 <nav className={styles.ItemPageNav}>
                     <div className={styles.LeftSection}>
                         <Button content={barsTag}
@@ -80,11 +80,12 @@ class ItemPage extends Component {
                         />
                         <Button content={returnToMenuTag}
                             style={styles.ReturnToMenu}
-                            clicked={()=>{this.props.returnHomeClick("HOMEPAGE", null)}}
+                            clicked={()=>{this.props.returnHomeClick("HOMEPAGE", null, this.state.itemOrdered)}}
                         />
                     </div>
                     <Button content={checkOutTag}
                         style={styles.CheckOut}
+                        clicked={()=> this.props.checkoutClick(true)}
                     />
                 </nav>
                 <div className={styles.ItemPageMain}>

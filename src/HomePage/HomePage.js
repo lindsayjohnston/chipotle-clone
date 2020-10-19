@@ -7,7 +7,7 @@ import MenuDisplay from '../MenuDisplay/MenuDisplay';
 
 const homePage = (props) => (
     <Aux>
-        <MenuBar />
+        <MenuBar checkoutClick={props.checkoutClick}/>
         <PromoBanner />
         <LoyaltyContainer/>
         <MenuDisplay click={(item, img)=>{props.itemClick(item, img)}}/>

@@ -129,3 +129,6 @@
     margin: 0px 20px;
 }
 
+.Hidden{
+    visibility: hidden;
+}
