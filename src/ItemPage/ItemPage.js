@@ -7,10 +7,10 @@ import logoTag from '../TagsForButtons/LogoTag';
 import signInTag from '../TagsForButtons/SignInTag';
 import checkOutTag from '../TagsForButtons/CheckOutTag';
 import ToppingSection from './ToppingsSection/ToppingsSection';
-import CheckoutSideDrawer from '../CheckoutSideDrawer/CheckoutSideDrawer';
+
 
 const bottomButtonTag = <h2>ADD TO BAG</h2>;
-const returnToMenuTag= <h1>RETURN TO MENU</h1>
+const returnToMenuTag = <h1>RETURN TO MENU</h1>
 class ItemPage extends Component {
     state = {
         BURRITO: {
@@ -28,43 +28,50 @@ class ItemPage extends Component {
         itemOrdered: null
     }
 
-    addToppingHandler(topping, item){
-        if(this.state.itemOrdered===null){
-            this.setState({itemOrdered: [item, topping]})
-        }
-        else{
-            let itemArray= this.state.itemOrdered;
-            itemArray.push(topping);
-            this.setState({itemOrdered: itemArray});
-        }
-      
-        alert("state: " + this.state.itemOrdered);
-    };
+    addToppingHandler(item, topping,price) {
 
-    addToBagHandler(){
+        alert(topping + item + price)
+        if (this.state.itemOrdered === null) {
+            this.setState({ itemOrdered: [item, [topping, price]] })
+        }
+        else {
+            let itemArray = this.state.itemOrdered;
+            itemArray.push([topping, price]);
+            this.setState({ itemOrdered: itemArray });
+        }
+
 
     };
 
     render() {
-        let description= null;
-        let options= null;
+        let yourMealMessage="Click on an ingredient to add it to your order.";
+        if(this.state.itemOrdered !== null){
+            yourMealMessage=`${this.state.itemOrdered[0]}: `;
+            for(let i=1; i< this.state.itemOrdered.length; i++){
+                if(i=== this.state.itemOrdered.length -1){
+                    yourMealMessage+= `${this.state.itemOrdered[i][0]}`
+                } else{
+                    yourMealMessage+= `${this.state.itemOrdered[i][0]}, `;
+                }
+            }
+        }
+        let description = null;
+        let options = null;
         if (this.props.name === 'BURRITO') {
-            description= this.state.BURRITO.description;
-            options= this.state.BURRITO.options;
+            description = this.state.BURRITO.description;
+            options = this.state.BURRITO.options;
         } if (this.props.name === 'TACOS') {
-            description= this.state.TACOS.description;
-            options= this.state.TACOS.options;
+            description = this.state.TACOS.description;
+            options = this.state.TACOS.options;
         } if (this.props.name === 'SIDES & DRINKS') {
-            description= this.state.SIDESANDDRINKS.description;
-            options= this.state.SIDESANDDRINKS.options;
-        } 
+            description = this.state.SIDESANDDRINKS.description;
+            options = this.state.SIDESANDDRINKS.options;
+        }
         ;
 
-        
 
         return (
             <Aux >
-                {/* <CheckoutSideDrawer/> */}
                 <nav className={styles.ItemPageNav}>
                     <div className={styles.LeftSection}>
                         <Button content={barsTag}
@@ -80,50 +87,46 @@ class ItemPage extends Component {
                         />
                         <Button content={returnToMenuTag}
                             style={styles.ReturnToMenu}
-                            clicked={()=>{this.props.returnHomeClick("HOMEPAGE", null, this.state.itemOrdered)}}
+                            clicked={() => { this.props.returnHomeClick("HOMEPAGE", null, this.state.itemOrdered) }}
                         />
                     </div>
                     <Button content={checkOutTag}
                         style={styles.CheckOut}
-                        clicked={()=> this.props.checkoutClick(true)}
+                        clicked={() => this.props.checkoutClick(true)}
                     />
                 </nav>
                 <div className={styles.ItemPageMain}>
                     <div className={styles.ItemPageBanner}>
-                            <img alt={this.props.name} src={this.props.image} ></img>
-                        
+                        <img alt={this.props.name} src={this.props.image} ></img>
+
                         <div className={styles.Description}>
                             <h2 >BUILD YOUR </h2>
                             <h1>{this.props.name}</h1>
                             <p>{description}</p>
 
                         </div>
-
-
                     </div>
-
-
                     <div className={styles.ItemChoicesDiv}>
                         {options.map(
-                            title=>(
-                                <ToppingSection key={title} title={title} 
-                                toppingClick={(topping)=>{this.addToppingHandler(topping, this.props.name)}} />
-                                ))}
+                            title => (
+                                <ToppingSection key={title} title={title}
+                                    toppingClick={(topping, price) => { this.addToppingHandler(this.props.name, topping,  price) }} />
+                            ))}
 
                     </div>
                     <div className={styles.CheckoutBottomBar}>
                         <div>
                             <h2>YOUR MEAL</h2>
-                            <p>This is a message that might change according to options needed to be added.</p>
+                            <p>{yourMealMessage}</p>
 
                         </div>
-                        <Button content={bottomButtonTag} style={styles.BottomButton} clicked={()=>this.props.addToBagClick(this.state.itemOrdered)}/>
+                        <Button content={bottomButtonTag} style={styles.BottomButton} clicked={() => this.props.addToBagClick(this.state.itemOrdered)} />
 
                     </div>
 
                 </div>
-                
-                          
+
+
             </Aux>
 
         )

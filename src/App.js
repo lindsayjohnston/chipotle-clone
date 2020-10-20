@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from './App.module.css';
 import HomePage from './HomePage/HomePage';
 import ItemPage from './ItemPage/ItemPage';
 import SideDrawer from './CheckoutSideDrawer/CheckoutSideDrawer';
@@ -9,14 +8,33 @@ class App extends Component {
     pageShown:<HomePage 
                 itemClick={(item,img) => this.pageShownHandler(item,img)} checkoutClick={(boolean)=>this.sideDrawerShownHandler(boolean)}/>,
     order: [],
+    totalPrice: 0,
     sideDrawerShown: false
+  }
+
+  addToBagHandler= (itemArray)=>{
+    let newOrder= this.state.order;
+    alert('added ' + itemArray + 'to bag');
+    //ADD CHARGES TOGETHER FOR ITEM
+    let itemPrice=0;
+    for(let i=1; i < itemArray.length; i++){
+      if(itemArray[i][1] !== null){
+        let numberString=itemArray[i][1];
+        let number=parseFloat(numberString.slice(1, numberString.length));
+        itemPrice+= number;
+      }
+    }
+    itemArray.push({ITEMPRICE: itemPrice});
+    newOrder.push(itemArray);
+    let updatedPrice= this.state.totalPrice + itemPrice;
+    this.setState({order: newOrder, totalPrice: updatedPrice});
   }
 
   pageShownHandler = (item, img, itemOrdered) => {
       if(item === "BURRITO" || item === "TACOS" || item=== "SIDES & DRINKS"){
         let newPage= <ItemPage
+                        addToBagClick={(itemArray) =>{ this.addToBagHandler(itemArray)}}
                         checkoutClick={(boolean)=>this.sideDrawerShownHandler(boolean)} 
-                        addToBagClick={(itemArray)=>this.addToOrderHandler(itemArray)}
                         returnHomeClick={(item, img) =>this.pageShownHandler (item, img)} name={item} image={img}/>;
         this.setState({ pageShown: newPage});
       }
@@ -31,7 +49,6 @@ class App extends Component {
       }
   }
 
-
   sideDrawerShownHandler=(boolean) =>{
     this.setState({sideDrawerShown: boolean});
   }
@@ -42,7 +59,7 @@ class App extends Component {
     return (
       <div>
         {pageShown}
-        <SideDrawer drawerClick={this.sideDrawerShownHandler} shown={this.state.sideDrawerShown}/>
+        <SideDrawer drawerClick={this.sideDrawerShownHandler} shown={this.state.sideDrawerShown} order={this.state.order}  totalPrice={this.state.totalPrice}/>
         {/* {sideDrawer} */}
       </div>
     );

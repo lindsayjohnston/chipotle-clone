@@ -24,6 +24,30 @@ const checkoutSideDrawer =(props)=> {
         if(!props.shown){
             drawerStyles=`${styles.PageContainer} ${styles.Hidden}`
         };
+        let orderSummary="";
+        if(props.order.length===0){
+            orderSummary="Click on a menu item to add it to your bag!";
+        }
+        if(props.order.length >0){
+            orderSummary= props.order.map(item =>{
+                let itemPrice= item[item.length -1].ITEMPRICE;
+            
+                let itemText= `${item[0]}: `;
+                for(let i=1; i< item.length-1; i++){
+                    if(i=== item.length -2){
+                        itemText+= `${item[i][0]}`
+                    } else{
+                        itemText+= `${item[i][0]}, `;
+                    }
+                }
+                return(
+                <div className={styles.OrderLineItem}>
+                    <h4 className={styles.ItemName}>{itemText}</h4>
+                    
+                    <h4 className={styles.ItemPrice}>ITEM PRICE: ${itemPrice.toFixed(2)}</h4>
+                </div> 
+            )})
+        }
         return(
             <div className={drawerStyles}>
             <div className={styles.PageOverlay}>
@@ -42,16 +66,14 @@ const checkoutSideDrawer =(props)=> {
     
                 <div className={styles.OrderContent}>
                     <div className={styles.OrderSummary}>
-                        <div className={styles.OrderLineItem}>
-                            <h3 className={styles.ItemName}>ITEM NAME</h3>
-                            <h3 className={styles.ItemPrice}>ITEM PRICE</h3>
-                        </div>
+                        {orderSummary}
+                        
                     </div>
     
                     <div className={styles.OrderTotal}>
                         <div className={styles.TotalLineItem}>
                             <h3 className={styles.ItemName}>Bag Total</h3>
-                            <h3 className={styles.ItemPrice}>TOTAL PRICE</h3>
+                            <h3 className={styles.ItemPrice}>${props.totalPrice.toFixed(2)}</h3>
                         </div>
     
                         <div className={styles.AddMoreBtn}>
