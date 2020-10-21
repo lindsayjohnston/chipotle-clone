@@ -5,7 +5,7 @@ import styles from './ToppingsSection.module.css';
 class ToppingsSection extends Component {
     state = {
         "PROTEIN OR VEGGIE": {
-            description: "Choose up to two.",
+            description: null,
             options: [
                 {
                     name: "CARNE ASADA",

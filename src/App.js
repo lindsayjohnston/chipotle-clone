@@ -12,6 +12,14 @@ class App extends Component {
     sideDrawerShown: false
   }
 
+  removeFromBagHandler=(orderIndex) =>{
+    //START HERE
+    //ADD PROP TO SIDEDRAWER--removeItemClick
+    let updatedOrderSumarry= this.state.order;
+    updatedOrderSumarry.splice(orderIndex, 1);
+    this.setState({order: updatedOrderSumarry});
+  }
+
   addToBagHandler= (itemArray)=>{
     let newOrder= this.state.order;
     alert('added ' + itemArray + 'to bag');
@@ -59,7 +67,13 @@ class App extends Component {
     return (
       <div>
         {pageShown}
-        <SideDrawer drawerClick={this.sideDrawerShownHandler} shown={this.state.sideDrawerShown} order={this.state.order}  totalPrice={this.state.totalPrice}/>
+        <SideDrawer 
+            drawerClick={this.sideDrawerShownHandler}
+            shown={this.state.sideDrawerShown} 
+            order={this.state.order}  
+            totalPrice={this.state.totalPrice}
+            removeItemClick={this.removeFromBagHandler}
+            />
         {/* {sideDrawer} */}
       </div>
     );

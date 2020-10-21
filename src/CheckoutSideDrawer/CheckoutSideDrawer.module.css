@@ -114,11 +114,17 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+}
+
+.OrderLineItem i{
+    margin:24.5px 5px;
+    cursor: pointer;
 }
 
 .ItemName{
     padding-right: 15px;
-    width: 250px;
+    width: 200px;
 }
 
 .TotalLineItem{

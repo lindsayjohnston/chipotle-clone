@@ -29,7 +29,7 @@ const checkoutSideDrawer =(props)=> {
             orderSummary="Click on a menu item to add it to your bag!";
         }
         if(props.order.length >0){
-            orderSummary= props.order.map(item =>{
+            orderSummary= props.order.map((item, index )=>{
                 let itemPrice= item[item.length -1].ITEMPRICE;
             
                 let itemText= `${item[0]}: `;
@@ -43,8 +43,8 @@ const checkoutSideDrawer =(props)=> {
                 return(
                 <div className={styles.OrderLineItem}>
                     <h4 className={styles.ItemName}>{itemText}</h4>
-                    
                     <h4 className={styles.ItemPrice}>ITEM PRICE: ${itemPrice.toFixed(2)}</h4>
+                    <i className="fas fa-times" onClick={()=>props.removeItemClick(index)}></i>
                 </div> 
             )})
         }
