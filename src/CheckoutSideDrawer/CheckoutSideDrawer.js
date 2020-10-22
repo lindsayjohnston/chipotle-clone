@@ -76,8 +76,15 @@ const checkoutSideDrawer =(props)=> {
                             <h3 className={styles.ItemPrice}>${props.totalPrice.toFixed(2)}</h3>
                         </div>
     
-                        <div className={styles.AddMoreBtn}>
-                            <h3>ADD ANOTHER MENU ITEM</h3>
+                        <div className={styles.AddMoreBtn} href="menu-display" 
+                        onClick={()=>{
+                            props.addAnotherItemClick();
+                            props.drawerClick(false);
+                   } }
+                        >   
+                                <h3>ADD ANOTHER MENU ITEM</h3>
+                            
+                            
                         </div>
     
                     </div>

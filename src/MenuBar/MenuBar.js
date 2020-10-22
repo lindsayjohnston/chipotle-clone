@@ -8,52 +8,63 @@ import findRestaurantTag from '../TagsForButtons/FindRestaurantTag.js';
 import checkOutTag from '../TagsForButtons/CheckOutTag';
 
 
-const menuBar = (props) => {
-    const clickHandler = name => {
-        alert(`${name} was clicked!`)
-    }
+const menuBar = (props) =>  {
+    let circleClassNames;
+    let numberOfItems=0;
+        if(props.order=== null || props.order.length===0){
+            circleClassNames=`${styles.Hidden}`;
+        } else{
+            numberOfItems= props.order.length;
+            circleClassNames=`${styles.ItemNumberCircle}`
+        }
+        return (
+            <header className={styles.MenuBar}>
+                <div className={styles.LeftDiv}>
+                    <Button
+                        style={styles.Menu}
+                        key="Menu"
+                        content={barsTag}
+                    />
+                    <Button
+                        style={styles.Logo}
+                        key="Logo"
+                        content={logoTag}
+                    />
+                    <Button
+                        style={styles.SignIn}
+                        key="SignIn"
+                        content={signInTag}
+                    />
+                </div>
+    
+                <div className={styles.MidDiv}>
+                    <Button
+                        style={styles.FindRestaurant}
+                        key="FindRestaurant"
+                        content={findRestaurantTag}
+                    />
+                </div>
+    
+                <div className={styles.RightDiv}>
+                    <div className={styles.CheckOutBagOverlay}>
+                        <Button
+                            style={styles.CheckOut}
+                            key="CheckOut"
+                            content={checkOutTag}
+                            clicked={() => props.checkoutClick(true)}
+                        />
+                        <div className={circleClassNames}>{numberOfItems}</div>
+    
+                    </div>
+    
+                </div>
+    
+    
+            </header>
+        )
+    };
+    ///WHY ABOVE NO WORKY?
+    
 
-    return (
-        <header className={styles.MenuBar}>
-            <div className={styles.LeftDiv}>
-                <Button
-                    style={styles.Menu}
-                    key="Menu"
-                    content={barsTag}
-                    clicked={() => clickHandler('Menu')}
-                />
-                <Button
-                    style={styles.Logo}
-                    key="Logo"
-                    content={logoTag}
-                />
-                <Button
-                    style={styles.SignIn}
-                    key="SignIn"
-                    content={signInTag}
-                />
-            </div>
-
-            <div className={styles.MidDiv}>
-                <Button
-                    style={styles.FindRestaurant}
-                    key="FindRestaurant"
-                    content={findRestaurantTag}
-                />
-            </div>
-
-            <div className={styles.RightDiv}>
-            <Button
-                    style={styles.CheckOut}
-                    key="CheckOut"
-                    content={checkOutTag}
-                    clicked={() => props.checkoutClick(true)}
-                />
-            </div>
-
-
-        </header>
-    )
-};
 
 export default menuBar;

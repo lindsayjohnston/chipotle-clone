@@ -5,24 +5,27 @@ import SideDrawer from './CheckoutSideDrawer/CheckoutSideDrawer';
 
 class App extends Component {
   state = {
-    pageShown:<HomePage 
-                itemClick={(item,img) => this.pageShownHandler(item,img)} checkoutClick={(boolean)=>this.sideDrawerShownHandler(boolean)}/>,
+    currentPage: "HOMEPAGE",
     order: [],
     totalPrice: 0,
-    sideDrawerShown: false
+    sideDrawerShown: false,
+    pageShown:<HomePage 
+                order={null}
+                itemClick={(item,img) => this.pageShownHandler(item,img)} checkoutClick={(boolean)=>this.sideDrawerShownHandler(boolean)}/>
   }
 
   removeFromBagHandler=(orderIndex) =>{
-    //START HERE
-    //ADD PROP TO SIDEDRAWER--removeItemClick
-    let updatedOrderSumarry= this.state.order;
-    updatedOrderSumarry.splice(orderIndex, 1);
-    this.setState({order: updatedOrderSumarry});
+    let itemOrdered=this.state.order[orderIndex]
+    let price= itemOrdered[itemOrdered.length -1].ITEMPRICE;
+    let updatedPrice= this.state.totalPrice - price;
+    let updatedOrderSummary= this.state.order;
+    updatedOrderSummary.splice(orderIndex, 1);
+    this.setState({order: updatedOrderSummary, totalPrice: updatedPrice});
+    this.pageShownHandler("HOMEPAGE");
   }
 
   addToBagHandler= (itemArray)=>{
     let newOrder= this.state.order;
-    alert('added ' + itemArray + 'to bag');
     //ADD CHARGES TOGETHER FOR ITEM
     let itemPrice=0;
     for(let i=1; i < itemArray.length; i++){
@@ -41,6 +44,7 @@ class App extends Component {
   pageShownHandler = (item, img, itemOrdered) => {
       if(item === "BURRITO" || item === "TACOS" || item=== "SIDES & DRINKS"){
         let newPage= <ItemPage
+                        order={this.state.order}
                         addToBagClick={(itemArray) =>{ this.addToBagHandler(itemArray)}}
                         checkoutClick={(boolean)=>this.sideDrawerShownHandler(boolean)} 
                         returnHomeClick={(item, img) =>this.pageShownHandler (item, img)} name={item} image={img}/>;
@@ -50,7 +54,8 @@ class App extends Component {
         if(itemOrdered!== null && itemOrdered !==undefined){
           this.state.order.push(itemOrdered)
         }
-        this.setState({pageShown:<HomePage        
+        this.setState({pageShown:<HomePage  
+            order={this.state.order}      
             itemClick={(item,img,itemOrdered) => this.pageShownHandler(item,img, itemOrdered)}
              checkoutClick={this.sideDrawerShownHandler} 
         />})
@@ -68,6 +73,7 @@ class App extends Component {
       <div>
         {pageShown}
         <SideDrawer 
+            addAnotherItemClick={()=>this.pageShownHandler("HOMEPAGE")}
             drawerClick={this.sideDrawerShownHandler}
             shown={this.state.sideDrawerShown} 
             order={this.state.order}  

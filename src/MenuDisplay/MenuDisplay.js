@@ -26,7 +26,7 @@ const menuItems = [
 ];
 
 const menuDisplay = (props) => (
-    <div className={styles.MenuDisplay}>
+    <div className={styles.MenuDisplay} id="menu-display">
         {menuItems.map(item => (
             <MenuItem 
                 key={item.name}

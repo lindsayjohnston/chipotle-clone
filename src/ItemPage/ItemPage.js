@@ -28,30 +28,39 @@ class ItemPage extends Component {
         itemOrdered: null
     }
 
-    addToppingHandler(item, topping,price) {
+    addToppingHandler(item, topping, price, itemType) {
+        let isProtein = false;
+        if (itemType === "PROTEIN OR VEGGIE") {
+            isProtein = true;
+        }
 
-        alert(topping + item + price)
         if (this.state.itemOrdered === null) {
-            this.setState({ itemOrdered: [item, [topping, price]] })
+            this.setState({ itemOrdered: [item, [topping, price, isProtein]] })
         }
         else {
             let itemArray = this.state.itemOrdered;
-            itemArray.push([topping, price]);
+            itemArray.push([topping, price, isProtein]);
             this.setState({ itemOrdered: itemArray });
         }
-
-
     };
 
     render() {
-        let yourMealMessage="Click on an ingredient to add it to your order.";
-        if(this.state.itemOrdered !== null){
-            yourMealMessage=`${this.state.itemOrdered[0]}: `;
-            for(let i=1; i< this.state.itemOrdered.length; i++){
-                if(i=== this.state.itemOrdered.length -1){
-                    yourMealMessage+= `${this.state.itemOrdered[i][0]}`
-                } else{
-                    yourMealMessage+= `${this.state.itemOrdered[i][0]}, `;
+        let circleClassNames;
+        let numberOfItems = 0;
+        if (this.props.order === null || this.props.order.length === 0) {
+            circleClassNames = `${styles.Hidden}`;
+        } else {
+            numberOfItems = this.props.order.length;
+            circleClassNames = `${styles.ItemNumberCircle}`
+        }
+        let yourMealMessage = "Click on an ingredient to add it to your order.";
+        if (this.state.itemOrdered !== null) {
+            yourMealMessage = `${this.state.itemOrdered[0]}: `;
+            for (let i = 1; i < this.state.itemOrdered.length; i++) {
+                if (i === this.state.itemOrdered.length - 1) {
+                    yourMealMessage += `${this.state.itemOrdered[i][0]}`
+                } else {
+                    yourMealMessage += `${this.state.itemOrdered[i][0]}, `;
                 }
             }
         }
@@ -90,10 +99,15 @@ class ItemPage extends Component {
                             clicked={() => { this.props.returnHomeClick("HOMEPAGE", null, this.state.itemOrdered) }}
                         />
                     </div>
-                    <Button content={checkOutTag}
-                        style={styles.CheckOut}
-                        clicked={() => this.props.checkoutClick(true)}
-                    />
+                    <div className={styles.CheckoutOverlay}>
+                        <Button content={checkOutTag}
+                            style={styles.CheckOut}
+                            clicked={() => this.props.checkoutClick(true)}
+                        />
+                        <div className={circleClassNames}>{numberOfItems}</div>
+
+                    </div>
+
                 </nav>
                 <div className={styles.ItemPageMain}>
                     <div className={styles.ItemPageBanner}>
@@ -110,8 +124,10 @@ class ItemPage extends Component {
                         {options.map(
                             title => (
                                 <ToppingSection key={title} title={title}
-                                    toppingClick={(topping, price) => { this.addToppingHandler(this.props.name, topping,  price) }} />
+                                    toppingClick={(topping, price, itemType) => { this.addToppingHandler(this.props.name, topping, price, itemType) }} />
                             ))}
+
+
 
                     </div>
                     <div className={styles.CheckoutBottomBar}>
@@ -120,7 +136,34 @@ class ItemPage extends Component {
                             <p>{yourMealMessage}</p>
 
                         </div>
-                        <Button content={bottomButtonTag} style={styles.BottomButton} clicked={() => this.props.addToBagClick(this.state.itemOrdered)} />
+                        <Button
+                            content={bottomButtonTag}
+                            style={styles.BottomButton}
+                            clicked={() => {
+                                if (this.state.itemOrdered === null) {
+                                    alert("Pick an item to add to your bag!")
+                                } else {
+                                    let proteinPresentTally = 0;
+                                    if (this.state.itemOrdered[0] !== 'SIDES & DRINKS') {
+                                        for (let i = 1; i < this.state.itemOrdered.length; i++) {
+                                            if (this.state.itemOrdered[i][2] === true) {
+                                                proteinPresentTally++;
+                                            }
+                                        }
+                                    } else {
+                                        proteinPresentTally = 1;
+                                    }
+                                    if (proteinPresentTally === 0) {
+                                        alert("You must pick a protein or veggie for this item!")
+                                    } else {
+                                        this.props.addToBagClick(this.state.itemOrdered);
+                                        alert("Item added to bag!")
+                                        this.setState({ itemOrdered: null });
+                                    }
+                                }
+                            }
+                            }
+                        />
 
                     </div>
 

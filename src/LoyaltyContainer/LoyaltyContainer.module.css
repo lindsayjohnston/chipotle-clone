@@ -34,3 +34,8 @@
     margin-left: 10px;
     font-size: 20px;
 }
+
+.LoyaltyContainer a{
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -150,7 +150,7 @@ class ToppingsSection extends Component {
                     {this.state[title].options.map(option => (
                         <div className={styles.ToppingCardMargin}>
                              <ToppingCard
-                             toppingClick= {this.props.toppingClick}
+                             toppingClick= {(name, price)=>this.props.toppingClick(name, price, this.props.title)}
                             className={styles.ToppingCard} 
                             image={option.image}
                             price={option.price}

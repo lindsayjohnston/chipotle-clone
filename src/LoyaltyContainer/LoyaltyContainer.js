@@ -13,7 +13,7 @@ const loyaltyContainer= (props)=>(
             style={styles.Button}
             content= {buttonContent}/>
         <h4> OR</h4>
-       <a href='/' className={styles.SignIn}>SIGN IN</a>
+       <a  className={styles.SignIn}>SIGN IN</a>
     </div>
     
 );
