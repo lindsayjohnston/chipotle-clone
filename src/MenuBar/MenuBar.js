@@ -11,6 +11,7 @@ import checkOutTag from '../TagsForButtons/CheckOutTag';
 const menuBar = (props) =>  {
     let circleClassNames;
     let numberOfItems=0;
+    debugger;
         if(props.order=== null || props.order.length===0){
             circleClassNames=`${styles.Hidden}`;
         } else{
@@ -63,7 +64,7 @@ const menuBar = (props) =>  {
             </header>
         )
     };
-    ///WHY ABOVE NO WORKY?
+
     
 
 

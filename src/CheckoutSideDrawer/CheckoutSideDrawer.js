@@ -80,18 +80,18 @@ const checkoutSideDrawer =(props)=> {
                         onClick={()=>{
                             props.addAnotherItemClick();
                             props.drawerClick(false);
-                   } }
+                            } }
                         >   
                                 <h3>ADD ANOTHER MENU ITEM</h3>
-                            
-                            
+                                        
                         </div>
     
                     </div>
     
                 </div>
     
-                <div className={styles.Footer}>
+                <div className={styles.Footer}
+                        onClick={props.submitOrder}>
                     <h1>CHECKOUT</h1>
                 </div>
             </div>

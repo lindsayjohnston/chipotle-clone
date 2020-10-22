@@ -69,6 +69,22 @@ class App extends Component {
     this.setState({sideDrawerShown: boolean});
   }
 
+  submitOrderHandler= () =>{
+    //SEND ORDER TO FIREBASE
+    if(this.state.order.length === 0){
+      alert("Add items to your order first!")
+    } else{
+      // debugger;
+      this.setState({itemImage: null,
+        order: [],
+        totalPrice: 0,}, ()=>{
+          alert("Order submitted successfully!");
+          this.sideDrawerShownHandler(false);
+          this.pageShownHandler("HOMEPAGE");
+        });
+    }
+  }
+
   render() {
     let pageShown = this.state.pageShown;
     
@@ -76,6 +92,7 @@ class App extends Component {
       <div>
         {pageShown}
         <SideDrawer 
+            submitOrder = {this.submitOrderHandler}
             addAnotherItemClick={()=>this.pageShownHandler("HOMEPAGE")}
             drawerClick={this.sideDrawerShownHandler}
             shown={this.state.sideDrawerShown} 

@@ -29,6 +29,7 @@ class ItemPage extends Component {
     }
 
     addToppingHandler(item, topping, price, itemType) {
+        // debugger;
         let isProtein = false;
         if (itemType === "PROTEIN OR VEGGIE") {
             isProtein = true;
@@ -38,9 +39,24 @@ class ItemPage extends Component {
             this.setState({ itemOrdered: [item, [topping, price, isProtein]] })
         }
         else {
-            let itemArray = this.state.itemOrdered;
-            itemArray.push([topping, price, isProtein]);
-            this.setState({ itemOrdered: itemArray });
+            let proteinAlreadyAdded= false;
+
+            //CHECK IF PROTEIN ALREADY ADDED
+            for (let i = 1; i < this.state.itemOrdered.length; i++) {
+                if (this.state.itemOrdered[i][2] && (itemType === "PROTEIN OR VEGGIE")) {
+                    proteinAlreadyAdded=true;
+                    break;
+                }
+            }
+
+            if(proteinAlreadyAdded){
+                alert("You can only add one protein or veggie to this item!")
+            }  else{
+                let itemArray = this.state.itemOrdered;
+                itemArray.push([topping, price, isProtein]);
+                this.setState({ itemOrdered: itemArray });
+            }
+
         }
     };
 
