@@ -5,7 +5,8 @@ import SideDrawer from './CheckoutSideDrawer/CheckoutSideDrawer';
 
 class App extends Component {
   state = {
-    currentPage: "HOMEPAGE",
+    pageName: "HOMEPAGE",
+    itemImage: null,
     order: [],
     totalPrice: 0,
     sideDrawerShown: false,
@@ -21,7 +22,7 @@ class App extends Component {
     let updatedOrderSummary= this.state.order;
     updatedOrderSummary.splice(orderIndex, 1);
     this.setState({order: updatedOrderSummary, totalPrice: updatedPrice});
-    this.pageShownHandler("HOMEPAGE");
+    this.pageShownHandler(this.state.pageName, this.state.itemImage);
   }
 
   addToBagHandler= (itemArray)=>{
@@ -47,8 +48,10 @@ class App extends Component {
                         order={this.state.order}
                         addToBagClick={(itemArray) =>{ this.addToBagHandler(itemArray)}}
                         checkoutClick={(boolean)=>this.sideDrawerShownHandler(boolean)} 
-                        returnHomeClick={(item, img) =>this.pageShownHandler (item, img)} name={item} image={img}/>;
-        this.setState({ pageShown: newPage});
+                        returnHomeClick={(item, img) =>this.pageShownHandler (item, img)} 
+                        name={item} 
+                        image={img}/>;
+        this.setState({ pageShown: newPage, pageName: item, itemImage: img});
       }
       if(item==="HOMEPAGE"){
         if(itemOrdered!== null && itemOrdered !==undefined){
