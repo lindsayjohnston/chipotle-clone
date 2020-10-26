@@ -28,8 +28,11 @@ class ItemPage extends Component {
         itemOrdered: null
     }
 
+    clearItemHandler=()=> {
+        this.setState({itemOrdered:null});
+    }
+
     addToppingHandler(item, topping, price, itemType) {
-        // debugger;
         let isProtein = false;
         if (itemType === "PROTEIN OR VEGGIE") {
             isProtein = true;
@@ -147,10 +150,10 @@ class ItemPage extends Component {
 
                     </div>
                     <div className={styles.CheckoutBottomBar}>
-                        <div>
+                        <div className={styles.BottomBarLeft}>
                             <h2>YOUR MEAL</h2>
                             <p>{yourMealMessage}</p>
-
+                            <div className={styles.ClearItemBtn} onClick={this.clearItemHandler}>CLEAR ITEM</div>
                         </div>
                         <Button
                             content={bottomButtonTag}

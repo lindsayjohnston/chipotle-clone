@@ -1,7 +1,19 @@
 .MenuDisplay{
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: center;
-    /* height: 1000px; */
+}
+
+@media (max-width: 900px){
+    .MenuDisplay{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px){
+    .MenuDisplay{
+        /* padding-right: 10px; */
+    }
 }

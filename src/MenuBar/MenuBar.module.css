@@ -16,6 +16,12 @@
     display: flex;
     flex: 1 2 100%;
 }
+.CheckOutBagOverlay
+/* .RightDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
 
 .Menu{
     width: fit-content;
@@ -69,12 +75,11 @@
     flex: 1 2 100%;
 }
 
-.CheckOut{
-    margin-right: 20px;
-}
 
 .CheckOutBagOverlay{
     position: relative;
+    width: 23px;
+    height: 25px;
 }
 
 .ItemNumberCircle{
@@ -95,4 +100,29 @@
 
 .Hidden{
     visibility: hidden;
+}
+
+ @media (max-width: 900px){
+    .FindRestaurant{
+        display: none;
+    }
+
+    .MenuBar{
+        width: 100vw;
+        padding: 0px 20px;
+    }
+}
+
+@media (max-width: 500px){
+    
+    .Logo, .SignIn{
+        display: none;
+    }
+    .RightDiv{
+        width: 40vw;
+    }
+
+
+
+    
 }

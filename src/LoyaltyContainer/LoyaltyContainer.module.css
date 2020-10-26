@@ -5,6 +5,7 @@
     justify-content: center;
     height: 80px;
     border-bottom: 1px solid #d4cbc7;
+    /* width: 100vw; */
 }
 
 .LoyaltyContainer img {
@@ -38,4 +39,29 @@
 .LoyaltyContainer a{
     cursor: pointer;
     text-decoration: underline;
+}
+
+@media (max-width: 900px){
+    .FirstText{
+        display: none;
+    }
+
+    .LoyaltyContainer img{
+        display: none;
+    }
+
+    .LoyaltyContainer {
+       padding-right: 30px;
+    }
+}
+
+@media (max-width: 500px){
+    .LoyaltyContainer{
+        padding-left: 20px;
+    }
+
+    .LoyaltyContainer button{
+        width: 150px;
+        font-size: 12px;
+    }
 }

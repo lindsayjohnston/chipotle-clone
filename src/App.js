@@ -57,7 +57,7 @@ class App extends Component {
         if(itemOrdered!== null && itemOrdered !==undefined){
           this.state.order.push(itemOrdered)
         }
-        this.setState({pageShown:<HomePage  
+        this.setState({pageName: item, pageShown:<HomePage  
             order={this.state.order}      
             itemClick={(item,img,itemOrdered) => this.pageShownHandler(item,img, itemOrdered)}
              checkoutClick={this.sideDrawerShownHandler} 

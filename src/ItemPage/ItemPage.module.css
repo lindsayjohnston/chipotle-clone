@@ -65,7 +65,8 @@
 }
 
 .ItemPageBanner img{
-   height: 80%;
+   width: 50%;
+   max-width: 500px;
 }
 
 .Description{
@@ -86,13 +87,17 @@
     position: fixed;
     bottom: 0px;
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     background-color: #f7f2ed;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 100px;
+    padding: 5px 100px;
+}
+
+.BottomBarLeft{
+    width: 80%;
 }
 
 .CheckoutBottomBar p {
@@ -107,15 +112,18 @@
     height: 60px;
 }
 
-/* .ItemChoicesDiv{
-    border: 1px green solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
+.ClearItemBtn{
+    border: 1px solid #451400;
+    width: fit-content;
+    padding:0 5px;
+    background-color: white;
+    cursor: pointer;
+}
 
 .CheckoutOverlay{
-    position: relative
+    position: relative;
+    width: fit-content;
+    height: fit-content;
 }
 
 .ItemNumberCircle{
@@ -137,3 +145,71 @@
 .Hidden{
     visibility: hidden;
 }
+
+@media (max-width: 900px){
+.SignIn{
+    display: none;
+}
+    
+.ItemPageBanner{
+    flex-direction: column; 
+    height: fit-content;
+}
+
+.ItemPageBanner img{
+    height: unset;
+}
+
+.Description {
+    width: 90%;
+}
+
+.Description h2{
+    font-size: 1em;
+}
+
+.Description h1{
+    font-size: 3em;
+}
+
+.CheckoutBottomBar{
+    padding: 5px 20px;
+}
+
+.BottomBarLeft p{
+    max-width: 60vw;
+    max-height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.BottomButton {
+    width: 30vw;
+    font-size: 10px;
+    padding: 0px 5px;
+}
+}
+
+@media (max-width:500px){
+    .ItemPageBanner{
+        padding-top: 20px;
+    }
+    .Logo img{
+        display: none;
+    }
+
+    .ReturnToMenu h1{
+        border: unset;
+    };
+
+    .CheckoutBottomBar{
+        padding: 5px;
+    }
+
+    .BottomBarLeft > p{
+        font-size: 12px;
+    }
+
+}
+

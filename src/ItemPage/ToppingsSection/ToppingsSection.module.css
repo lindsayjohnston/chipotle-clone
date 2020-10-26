@@ -26,3 +26,33 @@
 }
 
 
+@media (max-width: 900px){
+    .ToppingsSection {
+        width: 100vw;
+        padding: 0 50px;
+    }
+
+    .ToppingCards{
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .ToppingCardMargin{
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 500px){
+    .ToppingsSection h1{
+        text-align: center;
+    }
+    .ToppingCards{
+        justify-content: center;
+    }
+
+    .ToppingCardMargin{
+        margin-right:0;
+        margin-bottom: 20px;
+    }
+}
