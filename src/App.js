@@ -89,7 +89,7 @@ class App extends Component {
     let pageShown = this.state.pageShown;
     
     return (
-      <div>
+      <div >
         {pageShown}
         <SideDrawer 
             submitOrder = {this.submitOrderHandler}
