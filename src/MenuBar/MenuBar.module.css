@@ -26,7 +26,7 @@
 .Menu{
     width: fit-content;
     margin-right: 5px;
-    display: flex;
+    display: none;
     align-items: center;
 }
 
@@ -116,9 +116,14 @@
 
 @media (max-width: 500px){
     
-    .Logo, .SignIn{
+    .Logo, .SignIn {
         display: none;
     }
+
+    .Menu{
+        display: flex;
+    }
+
     .RightDiv{
         width: 40vw;
     }
