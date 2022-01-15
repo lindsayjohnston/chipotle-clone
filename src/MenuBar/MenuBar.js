@@ -24,6 +24,7 @@ const menuBar = (props) =>  {
                         style={styles.Menu}
                         key="Menu"
                         content={barsTag}
+                        className={styles.Bars}
                     />
                     <Button
                         style={styles.Logo}

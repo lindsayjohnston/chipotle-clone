@@ -30,6 +30,10 @@
     align-items: center;
 }
 
+.Bars{
+    display: none;
+}
+
 .Logo{
     margin-right: 30px;
     display: flex;
@@ -115,6 +119,9 @@
 }
 
 @media (max-width: 500px){
+    .Bars{
+        display: unset;
+    }
     
     .Logo, .SignIn {
         display: none;
