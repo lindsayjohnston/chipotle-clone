@@ -21,10 +21,9 @@ const menuBar = (props) =>  {
             <header className={styles.MenuBar}>
                 <div className={styles.LeftDiv}>
                     <Button
-                        style={styles.Menu}
-                        key="Menu"
+                        style={styles.MenuBars}
+                        key="MenuBars"
                         content={barsTag}
-                        className={styles.Bars}
                     />
                     <Button
                         style={styles.Logo}

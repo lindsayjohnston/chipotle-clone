@@ -103,7 +103,7 @@ class ItemPage extends Component {
                 <nav className={styles.ItemPageNav}>
                     <div className={styles.LeftSection}>
                         <Button content={barsTag}
-                            style={styles.Bars}
+                            style={styles.MenuBars}
                         />
                         <Button
                             style={styles.Logo}

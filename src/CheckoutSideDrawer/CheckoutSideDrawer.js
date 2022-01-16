@@ -11,12 +11,12 @@ const findRestaurantTag =
 
 const makeGroupOrderTag =
     <Aux>
-        <i class="fas fa-user-plus fa-2x"></i>
+        <i className="fas fa-user-plus fa-2x"></i>
         <p> MAKE IT A GROUP ORDER</p>
     </Aux>
     ;
 
-const xOutTag = <i class="fas fa-times fa-2x"></i>;
+const xOutTag = <i className="fas fa-times fa-2x"></i>;
 
 
 const checkoutSideDrawer =(props)=> {

@@ -21,6 +21,10 @@
     justify-content: flex-start;
 }
 
+.MenuBars{
+    display: none;
+}
+
 .Logo img{
     width: 95px;
     margin-left: 5px;

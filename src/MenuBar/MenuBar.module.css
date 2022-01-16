@@ -16,22 +16,18 @@
     display: flex;
     flex: 1 2 100%;
 }
-.CheckOutBagOverlay
+/* .CheckOutBagOverlay
 /* .RightDiv{
     display: flex;
     align-items: center;
     justify-content: center;
-} */
+} */ 
 
-.Menu{
+.MenuBars{
     width: fit-content;
     margin-right: 5px;
     display: none;
     align-items: center;
-}
-
-.Bars{
-    display: none;
 }
 
 .Logo{
@@ -119,10 +115,10 @@
 }
 
 @media (max-width: 500px){
-    .Bars{
+    .MenuBars{
         display: unset;
     }
-    
+
     .Logo, .SignIn {
         display: none;
     }
