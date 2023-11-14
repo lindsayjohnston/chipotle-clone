@@ -9,25 +9,25 @@ class ToppingsSection extends Component {
             options: [
                 {
                     name: "CARNE ASADA",
-                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-6608-carne-asada/web-mobile/order.png)",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/menu/menu-items/cmg-6608-carne-asada/mobile-app/order.png)",
                     price: 9.25,
                     calories: 250
                 },
                 {
                     name: "CHICKEN",
-                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-6601-chicken/web-mobile/order.png)",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/menu/menu-items/cmg-6601-chicken/web-desktop/order.png)",
                     price: 7.25,
                     calories: 180
                 },
                 {
                     name: "STEAK",
-                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-6602-steak/web-mobile/order.png)",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/menu/menu-items/cmg-6602-steak/web-desktop/order.png)",
                     price: 8.25,
                     calories: 150
                 },
                 {
                     name: "VEGGIE",
-                    image: "url(https://www.chipotle.com/content/dam/chipotle/global/menu/menu-items/cmg-5301-guacamole/web-mobile/order.png)",
+                    image: "url(https://www.chipotle.com/content/dam/chipotle/menu/menu-items/cmg-1025-large-side-of-guac/web-desktop/order.png)",
                     price: 7.25,
                     calories: 20
                 }

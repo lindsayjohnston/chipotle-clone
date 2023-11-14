@@ -2,11 +2,17 @@
     margin-top: 75px;
     width: 100vw;
     padding: 50px 100px;
-    background-image: url("https://www.chipotle.com/content/dam/poc/order/images/promo-banners/carne-2020/2300x520-Desktop-Background-Carne@2x.jpg");
-    background-size: cover;
-    background-position: center;
     height: 520px;
     border-bottom: 1px solid #d4cbc7;
+    display: flex;
+    flex-direction: row;
+}
+
+.PromoBanner .rightSide{
+    width: 50%;
+    background-image: url("https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/04/Carne-Asada-main.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .PromoBanner a{
@@ -92,8 +98,8 @@
 
 }
 
-@media (max-width: 500px){
-    .PromoBanner{
-        background-position: left 45% top 0px;
+@media (max-width: 700px){
+    .PromoBanner .rightSide{
+        margin-bottom: 150px;
     }
 }

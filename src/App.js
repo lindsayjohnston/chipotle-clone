@@ -3,7 +3,6 @@ import HomePage from './HomePage/HomePage';
 import ItemPage from './ItemPage/ItemPage';
 import SideDrawer from './CheckoutSideDrawer/CheckoutSideDrawer';
 
-//TEST
 
 class App extends Component {
   state = {
